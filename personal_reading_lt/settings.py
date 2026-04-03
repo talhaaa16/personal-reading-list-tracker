@@ -84,15 +84,18 @@ WSGI_APPLICATION = "personal_reading_lt.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
+DB_NAME = os.getenv('DB_NAME')
+if not DB_NAME:
+    raise ImproperlyConfigured("DB_NAME is not set")
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DB_NAME','db_name'),
+        'NAME': os.getenv('DB_NAME',DB_NAME),
         'USER': os.getenv('DB_USER','postgres'),
         'PASSWORD': os.getenv('DB_PASSWORD','CHANGE_ME_PASSWORD'),
-        'HOST': os.getenv('DB_HOST', 'localhost'),
-        'PORT': os.getenv('DB_PORT', '5432'),
+        'HOST': os.getenv('DB_HOST','localhost'),
+        'PORT': os.getenv('DB_PORT','5432'),
     }
 }
 
