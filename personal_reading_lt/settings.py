@@ -35,7 +35,7 @@ if not SECRET_KEY:
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',') if not DEBUG else ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS','').split(',') if not DEBUG else ['localhost', '127.0.0.1']
 
 # Application definition
 
@@ -85,9 +85,9 @@ WSGI_APPLICATION = "personal_reading_lt.wsgi.application"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DB_NAME','products'),
+        'NAME': os.getenv('DB_NAME','db_name'),
         'USER': os.getenv('DB_USER','postgres'),
-        'PASSWORD': os.getenv('DB_PASSWORD','test1234'),
+        'PASSWORD': os.getenv('DB_PASSWORD','your-pass'),
         'HOST': os.getenv('DB_HOST', 'localhost'),
         'PORT': os.getenv('DB_PORT', '5432'),
     }
